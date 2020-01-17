@@ -1,6 +1,6 @@
 const restify = require('restify');
 const corsMiddleware = require('restify-cors-middleware');
-const CreateRouter = require('restify-router');
+const CreateRouter = require('restify-router').Router;
 
 const router = new CreateRouter();
 const logger = require('./basic-logger');
