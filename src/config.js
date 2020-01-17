@@ -3,19 +3,18 @@ const envPath = `./environments/${process.env.NODE_ENV === 'development' ? '' : 
 const logger = require('./basic-logger');
 
 require('dotenv').config({
-	path: envPath
+  path: envPath,
 });
 
 const port = process.env.PORT || 8080;
 const traceEnabled = process.env.TRACE_ENABLED || false;
 
 const config = {
-	environment,
-	port,
-	traceEnabled
+  environment,
+  port,
+  traceEnabled,
 };
 
-if (traceEnabled)
-	logger.trace(`CONFIG:${envPath}`, process);
+if (traceEnabled) logger.trace(`CONFIG:${envPath}`, process);
 
 module.exports = config;

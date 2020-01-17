@@ -4,21 +4,24 @@
 	"description": "My API Description",
 	"keywords": [],
 	"scripts": {
-		"cz": "git add . && git-cz",
-		"start:dev": "cross-env NODE_ENV=development nodemon app.js",
-		"start:prod": "cross-env NODE_ENV=production nodemon app.js"
+		"cz": "npm run lint && git add . && git-cz",
+		"lint": "eslint ./src/**.js",
+		"start:dev": "cross-env NODE_ENV=development nodemon src/app.js",
+		"start:prod": "cross-env NODE_ENV=production nodemon src/app.js"
 	},
 	"devDependencies": {
 		"commitizen": "4.0.3",
 		"cross-env": "6.0.3",
 		"cz-conventional-changelog": "3.0.2",
-		"dotenv": "8.2.0",
-		"eslint": "4.16.0",
 		"nodemon": "2.0.2"
 	},
 	"dependencies": {
 		"bunyan": "1.8.12",
 		"bunyan-console-log": "0.2.0",
+		"dotenv": "8.2.0",
+		"eslint": "^6.8.0",
+		"eslint-config-airbnb-base": "^14.0.0",
+		"eslint-plugin-import": "^2.20.0",
 		"restify": "8.5.1",
 		"restify-cors-middleware": "1.1.1",
 		"restify-router": "0.5.0"
