@@ -2,6 +2,10 @@ const restify = require('restify');
 const router = new (require('restify-router')).Router();
 const logger = require('./basic-logger');
 const home = require('./routes/index');
+const config = require('./config');
+
+const { environment, port } = config;
+
 const corsMiddleware = require('restify-cors-middleware');
 
 const cors = corsMiddleware({
@@ -34,8 +38,8 @@ server.on('after', restify.plugins.metrics({ server: server }, function onMetric
 	logger.trace(`${metrics.method} ${metrics.path} ${metrics.statusCode} ${metrics.latency} ms`);
 }));
 
-server.listen(8080, function () {
-	logger.info('%s listening at %s', server.name, server.url);
+server.listen(port, function () {
+	logger.info('%s listening at %s: %s', server.name, server.url, environment);
 });
 
 server.on('uncaughtException', function (req, res, route, err) {

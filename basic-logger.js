@@ -1,7 +1,7 @@
 const bunyan = require('bunyan');
 const fs = require('fs');
 const stream = require('bunyan-console-log')({
-	printJSON: false,
+	printJSON: true,
 	compact: false,
 	colors: true
 });
